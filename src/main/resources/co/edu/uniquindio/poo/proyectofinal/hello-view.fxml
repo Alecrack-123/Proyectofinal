@@ -2,153 +2,160 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.chart.*?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.text.Text?>
 
-<VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.poo.proyectofinal.BilleteraVirtualController">
-    <MenuBar>
-        <Menu text="Inicio">
-            <MenuItem text="Registrar Usuario" onAction="#mostrarRegistroUsuario" />
-            <MenuItem text="Iniciar Sesión" onAction="#mostrarInicioSesion" />
-        </Menu>
-        <Menu text="Gestión">
-            <MenuItem text="Gestionar Usuarios" onAction="#mostrarGestionUsuarios" />
-            <MenuItem text="Gestionar Cuentas" onAction="#mostrarGestionCuentas" />
-            <MenuItem text="Gestionar Transacciones" onAction="#mostrarGestionTransacciones" />
-            <MenuItem text="Gestionar Presupuestos" onAction="#mostrarGestionPresupuestos" />
-            <MenuItem text="Gestionar Categorías" onAction="#mostrarGestionCategorias" />
-        </Menu>
-        <Menu text="Reportes">
-            <MenuItem text="Generar Reporte PDF" onAction="#generarReportePDF" />
-            <MenuItem text="Generar Reporte CSV" onAction="#generarReporteCSV" />
-        </Menu>
-    </MenuBar>
+<AnchorPane xmlns:fx="http://javafx.com/fxml" fx:controller="co.edu.uniquindio.poo.proyectofinal.Controller">
+    <children>
+        <TabPane prefWidth="800" prefHeight="600" tabClosingPolicy="UNAVAILABLE">
+            <!-- Administrador -->
+            <Tab text="Administrador">
+                <VBox spacing="10" padding="10">
+                    <HBox spacing="10">
+                        <TextField fx:id="nombreAdminField" promptText="Nombre"/>
+                        <TextField fx:id="emailAdminField" promptText="Email"/>
+                        <TextField fx:id="usuarioAdminField" promptText="Usuario"/>
+                        <PasswordField fx:id="contrasenaAdminField" promptText="Contraseña"/>
+                    </HBox>
+                    <HBox spacing="10">
+                        <Button text="Crear" onAction="#crearAdministrador"/>
+                        <Button text="Actualizar" onAction="#actualizarAdministrador"/>
+                        <Button text="Eliminar" onAction="#eliminarAdministrador"/>
+                    </HBox>
+                    <TableView fx:id="tableViewAdministrador">
+                        <columns>
+                            <TableColumn text="Nombre" fx:id="colNombreAdmin"/>
+                            <TableColumn text="Email" fx:id="colEmailAdmin"/>
+                            <TableColumn text="Usuario" fx:id="colUsuarioAdmin"/>
+                            <TableColumn text="Contraseña" fx:id="colContrasenaAdmin"/>
+                        </columns>
+                    </TableView>
+                </VBox>
+            </Tab>
 
-    <TabPane>
-        <!-- Tab para Usuarios -->
-        <Tab text="Usuarios">
-            <VBox spacing="10" padding="10">
-                <HBox spacing="10">
-                    <TextField fx:id="txtIdUsuario" promptText="ID Usuario" />
-                    <TextField fx:id="txtNombreUsuario" promptText="Nombre" />
-                    <TextField fx:id="txtCorreoUsuario" promptText="Correo" />
-                    <TextField fx:id="txtTelefonoUsuario" promptText="Teléfono" />
-                    <TextField fx:id="txtDireccionUsuario" promptText="Dirección" />
-                    <TextField fx:id="txtSaldoUsuario" promptText="Saldo" />
-                    <Button text="Crear Usuario" onAction="#crearUsuario" />
-                </HBox>
-                <TableView fx:id="tblUsuarios">
-                    <columns>
-                        <TableColumn text="ID" fx:id="colIdUsuario" />
-                        <TableColumn text="Nombre" fx:id="colNombreUsuario" />
-                        <TableColumn text="Correo" fx:id="colCorreoUsuario" />
-                        <TableColumn text="Teléfono" fx:id="colTelefonoUsuario" />
-                        <TableColumn text="Dirección" fx:id="colDireccionUsuario" />
-                        <TableColumn text="Saldo" fx:id="colSaldoUsuario" />
-                    </columns>
-                </TableView>
-            </VBox>
-        </Tab>
+            <!-- Usuario -->
+            <Tab text="Usuario">
+                <VBox spacing="10" padding="10">
+                    <HBox spacing="10">
+                        <TextField fx:id="nombreUsuarioField" promptText="Nombre"/>
+                        <TextField fx:id="emailUsuarioField" promptText="Email"/>
+                        <TextField fx:id="telefonoUsuarioField" promptText="Teléfono"/>
+                        <TextField fx:id="direccionUsuarioField" promptText="Dirección"/>
+                    </HBox>
+                    <HBox spacing="10">
+                        <Button text="Crear" onAction="#crearUsuario"/>
+                        <Button text="Actualizar" onAction="#actualizarUsuario"/>
+                        <Button text="Eliminar" onAction="#eliminarUsuario"/>
+                    </HBox>
+                    <TableView fx:id="tableViewUsuario">
+                        <columns>
+                            <TableColumn text="Nombre" fx:id="colNombreUsuario"/>
+                            <TableColumn text="Email" fx:id="colEmailUsuario"/>
+                            <TableColumn text="Teléfono" fx:id="colTelefonoUsuario"/>
+                            <TableColumn text="Dirección" fx:id="colDireccionUsuario"/>
+                        </columns>
+                    </TableView>
+                </VBox>
+            </Tab>
 
-        <!-- Tab para Cuentas -->
-        <Tab text="Cuentas">
-            <VBox spacing="10" padding="10">
-                <HBox spacing="10">
-                    <TextField fx:id="txtIdCuenta" promptText="ID Cuenta" />
-                    <TextField fx:id="txtNombreBanco" promptText="Nombre Banco" />
-                    <TextField fx:id="txtNumeroCuenta" promptText="Número Cuenta" />
-                    <TextField fx:id="txtTipoCuenta" promptText="Tipo Cuenta" />
-                    <TextField fx:id="txtSaldoCuenta" promptText="Saldo" />
-                    <Button text="Crear Cuenta" onAction="#crearCuenta" />
-                </HBox>
-                <TableView fx:id="tblCuentas">
-                    <columns>
-                        <TableColumn text="ID" fx:id="colIdCuenta" />
-                        <TableColumn text="Banco" fx:id="colNombreBanco" />
-                        <TableColumn text="Número" fx:id="colNumeroCuenta" />
-                        <TableColumn text="Tipo" fx:id="colTipoCuenta" />
-                        <TableColumn text="Saldo" fx:id="colSaldoCuenta" />
-                    </columns>
-                </TableView>
-            </VBox>
-        </Tab>
+            <!-- Cuenta -->
+            <Tab text="Cuenta">
+                <VBox spacing="10" padding="10">
+                    <HBox spacing="10">
+                        <TextField fx:id="numeroCuentaField" promptText="Número de Cuenta"/>
+                        <TextField fx:id="saldoCuentaField" promptText="Saldo"/>
+                        <ChoiceBox fx:id="usuarioBox"/>
+                    </HBox>
+                    <HBox spacing="10">
+                        <Button text="Crear" onAction="#crearCuenta"/>
+                        <Button text="Actualizar" onAction="#actualizarCuenta"/>
+                        <Button text="Eliminar" onAction="#eliminarCuenta"/>
+                    </HBox>
+                    <TableView fx:id="tableViewCuenta">
+                        <columns>
+                            <TableColumn text="Número" fx:id="colNumeroCuenta"/>
+                            <TableColumn text="Saldo" fx:id="colSaldoCuenta"/>
+                            <TableColumn text="Usuario" fx:id="colUsuarioCuenta"/>
+                        </columns>
+                    </TableView>
+                </VBox>
+            </Tab>
 
-        <!-- Tab para Transacciones -->
-        <Tab text="Transacciones">
-            <VBox spacing="10" padding="10">
-                <HBox spacing="10">
-                    <TextField fx:id="txtIdTransaccion" promptText="ID Transacción" />
-                    <DatePicker fx:id="dtpFechaTransaccion" promptText="Fecha" />
-                    <TextField fx:id="txtTipoTransaccion" promptText="Tipo" />
-                    <TextField fx:id="txtMontoTransaccion" promptText="Monto" />
-                    <TextField fx:id="txtDescripcionTransaccion" promptText="Descripción" />
-                    <Button text="Crear Transacción" onAction="#crearTransaccion" />
-                </HBox>
-                <TableView fx:id="tblTransacciones">
-                    <columns>
-                        <TableColumn text="ID" fx:id="colIdTransaccion" />
-                        <TableColumn text="Fecha" fx:id="colFechaTransaccion" />
-                        <TableColumn text="Tipo" fx:id="colTipoTransaccion" />
-                        <TableColumn text="Monto" fx:id="colMontoTransaccion" />
-                        <TableColumn text="Descripción" fx:id="colDescripcionTransaccion" />
-                    </columns>
-                </TableView>
-            </VBox>
-        </Tab>
+            <!-- Categoría -->
+            <Tab text="Categoría">
+                <VBox spacing="10" padding="10">
+                    <HBox spacing="10">
+                        <TextField fx:id="nombreCategoriaField" promptText="Nombre"/>
+                        <TextField fx:id="descripcionCategoriaField" promptText="Descripción"/>
+                    </HBox>
+                    <HBox spacing="10">
+                        <Button text="Crear" onAction="#crearCategoria"/>
+                        <Button text="Actualizar" onAction="#actualizarCategoria"/>
+                        <Button text="Eliminar" onAction="#eliminarCategoria"/>
+                    </HBox>
+                    <TableView fx:id="tableViewCategoria">
+                        <columns>
+                            <TableColumn text="Nombre" fx:id="colNombreCategoria"/>
+                            <TableColumn text="Descripción" fx:id="colDescripcionCategoria"/>
+                        </columns>
+                    </TableView>
+                </VBox>
+            </Tab>
 
-        <!-- Tab para Presupuestos -->
-        <Tab text="Presupuestos">
-            <VBox spacing="10" padding="10">
-                <HBox spacing="10">
-                    <TextField fx:id="txtIdPresupuesto" promptText="ID Presupuesto" />
-                    <TextField fx:id="txtNombrePresupuesto" promptText="Nombre" />
-                    <TextField fx:id="txtMontoTotalPresupuesto" promptText="Monto Total" />
-                    <TextField fx:id="txtMontoGastadoPresupuesto" promptText="Monto Gastado" />
-                    <Button text="Crear Presupuesto" onAction="#crearPresupuesto" />
-                </HBox>
-                <TableView fx:id="tblPresupuestos">
-                    <columns>
-                        <TableColumn text="ID" fx:id="colIdPresupuesto" />
-                        <TableColumn text="Nombre" fx:id="colNombrePresupuesto" />
-                        <TableColumn text="Monto Total" fx:id="colMontoTotalPresupuesto" />
-                        <TableColumn text="Monto Gastado" fx:id="colMontoGastadoPresupuesto" />
-                    </columns>
-                </TableView>
-            </VBox>
-        </Tab>
+            <!-- Transacción -->
+            <Tab text="Transacción">
+                <VBox spacing="10" padding="10">
+                    <HBox spacing="10">
+                        <TextField fx:id="idTransaccionField" promptText="ID"/>
+                        <TextField fx:id="fechaTransaccionField" promptText="Fecha (yyyy-MM-dd)"/>
+                        <TextField fx:id="montoTransaccionField" promptText="Monto"/>
+                    </HBox>
+                    <HBox spacing="10">
+                        <ChoiceBox fx:id="cuentaBox"/>
+                        <ChoiceBox fx:id="categoriaBox"/>
+                    </HBox>
+                    <HBox spacing="10">
+                        <Button text="Crear" onAction="#crearTransaccion"/>
+                        <Button text="Actualizar" onAction="#actualizarTransaccion"/>
+                        <Button text="Eliminar" onAction="#eliminarTransaccion"/>
+                    </HBox>
+                    <TableView fx:id="tableViewTransaccion">
+                        <columns>
+                            <TableColumn text="ID" fx:id="colIdTransaccion"/>
+                            <TableColumn text="Fecha" fx:id="colFechaTransaccion"/>
+                            <TableColumn text="Monto" fx:id="colMontoTransaccion"/>
+                            <TableColumn text="Cuenta" fx:id="colCuentaTransaccion"/>
+                            <TableColumn text="Categoría" fx:id="colCategoriaTransaccion"/>
+                        </columns>
+                    </TableView>
+                </VBox>
+            </Tab>
 
-        <!-- Tab para Categorías -->
-        <Tab text="Categorías">
-            <VBox spacing="10" padding="10">
-                <HBox spacing="10">
-                    <TextField fx:id="txtIdCategoria" promptText="ID Categoría" />
-                    <TextField fx:id="txtNombreCategoria" promptText="Nombre" />
-                    <TextField fx:id="txtDescripcionCategoria" promptText="Descripción" />
-                    <Button text="Crear Categoría" onAction="#crearCategoria" />
-                </HBox>
-                <TableView fx:id="tblCategorias">
-                    <columns>
-                        <TableColumn text="ID" fx:id="colIdCategoria" />
-                        <TableColumn text="Nombre" fx:id="colNombreCategoria" />
-                        <TableColumn text="Descripción" fx:id="colDescripcionCategoria" />
-                    </columns>
-                </TableView>
-            </VBox>
-        </Tab>
-
-        <!-- Tab para Estadísticas -->
-        <Tab text="Estadísticas">
-            <VBox spacing="10" padding="10">
-                <BarChart title="Gastos por Categoría" fx:id="barChartGastos">
-                    <xAxis>
-                        <CategoryAxis label="Categorías" />
-                    </xAxis>
-                    <yAxis>
-                        <NumberAxis label="Monto Gastado" />
-                    </yAxis>
-                </BarChart>
-            </VBox>
-        </Tab>
-    </TabPane>
-</VBox>
+            <!-- Presupuesto -->
+            <Tab text="Presupuesto">
+                <VBox spacing="10" padding="10">
+                    <HBox spacing="10">
+                        <TextField fx:id="idPresupuestoField" promptText="ID"/>
+                        <TextField fx:id="nombrePresupuestoField" promptText="Nombre"/>
+                        <TextField fx:id="montoTotalField" promptText="Monto Total"/>
+                        <TextField fx:id="montoGastadoField" promptText="Monto Gastado"/>
+                        <ChoiceBox fx:id="presupuestoCategoriaBox"/>
+                    </HBox>
+                    <HBox spacing="10">
+                        <Button text="Crear" onAction="#crearPresupuesto"/>
+                        <Button text="Actualizar" onAction="#actualizarPresupuesto"/>
+                        <Button text="Eliminar" onAction="#eliminarPresupuesto"/>
+                    </HBox>
+                    <TableView fx:id="tableViewPresupuesto">
+                        <columns>
+                            <TableColumn text="ID" fx:id="colIdPresupuesto"/>
+                            <TableColumn text="Nombre" fx:id="colNombrePresupuesto"/>
+                            <TableColumn text="Monto Total" fx:id="colMontoTotal"/>
+                            <TableColumn text="Monto Gastado" fx:id="colMontoGastado"/>
+                            <TableColumn text="Categoría" fx:id="colCategoriaPresupuesto"/>
+                        </columns>
+                    </TableView>
+                </VBox>
+            </Tab>
+        </TabPane>
+    </children>
+</AnchorPane>
