@@ -16,6 +16,10 @@ public class Administrador {
         this.correo = correo;
     }
 
+    public static void guardarAdministrador(Administrador admin) {
+        
+    }
+
     public String getIdAdmin() {
         return idAdmin;
     }

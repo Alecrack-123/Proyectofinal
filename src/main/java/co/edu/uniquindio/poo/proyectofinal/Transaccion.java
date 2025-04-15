@@ -28,6 +28,10 @@ public class Transaccion {
 
     }
 
+    public static void guardarTransaccion(Transaccion transaccion) {
+        
+    }
+
     public String getIdTransaccion() {
         return idTransaccion;
     }

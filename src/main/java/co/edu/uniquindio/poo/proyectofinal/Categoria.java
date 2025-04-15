@@ -16,6 +16,10 @@ public class Categoria {
         this.descripcion = descripcion;
     }
 
+    public static void guardarCategoria(Categoria categoria) {
+        
+    }
+
     public String getIdCategoria() {
         return idCategoria;
     }

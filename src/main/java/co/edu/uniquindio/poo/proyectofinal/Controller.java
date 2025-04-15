@@ -28,12 +28,12 @@ public class Controller {
     @FXML private Button btnCrearUsuario, btnEliminarUsuario, btnActualizarUsuario;
 
     // Elementos de Transacciones
-    @FXML private TextField idTransaccionField, tipoField, montoField, descripcionField;
+    @FXML private TextField idTransaccionField, tipoField, montoField, descripcioField;
     @FXML private DatePicker fechaPicker;
     @FXML private ChoiceBox<Cuenta> cuentaOrigenBox, cuentaDestinoBox;
     @FXML private ChoiceBox<Categoria> categoriaBox;
     @FXML private TableView<Transaccion> tableViewTransaccion;
-    @FXML private TableColumn<Transaccion, String> idTransaccionColumn, tipoColumn, descripcionColumn;
+    @FXML private TableColumn<Transaccion, String> idTransaccionColumn, tipoColumn, descripcioColumn;
     @FXML private TableColumn<Transaccion, LocalDate> fechaColumn;
     @FXML private TableColumn<Transaccion, Double> montoColumn;
     @FXML private TableColumn<Transaccion, Cuenta> cuentaOrigenColumn, cuentaDestinoColumn;
@@ -157,7 +157,7 @@ public class Controller {
         Usuario seleccionado = tableViewUsuario.getSelectionModel().getSelectedItem();
         if (seleccionado != null) {
             listaUsuarios.remove(seleccionado);
-            Usuario.eliminarUsuario(seleccionado);
+            Usuario.eliminarUsuario(String.valueOf(seleccionado));
             limpiarCamposUsuario();
         }
     }
@@ -201,7 +201,7 @@ public class Controller {
         Categoria seleccionada = tableViewCategoria.getSelectionModel().getSelectedItem();
         if (seleccionada != null) {
             listaCategorias.remove(seleccionada);
-            Categoria.eliminarCategoria(seleccionada);
+            Categoria.eliminarCategoria(String.valueOf(seleccionada));
             limpiarCamposCategoria();
         }
     }
@@ -242,7 +242,7 @@ public class Controller {
         Administrador seleccionado = tableViewAdmin.getSelectionModel().getSelectedItem();
         if (seleccionado != null) {
             listaAdministradores.remove(seleccionado);
-            Administrador.eliminarAdministrador(seleccionado);
+            Administrador.eliminarAdministrador(String.valueOf(seleccionado));
             limpiarCamposAdministrador();
         }
     }
@@ -257,13 +257,13 @@ public class Controller {
     @FXML
     private void crearCuenta() {
         Cuenta cuenta = new Cuenta(
-                idCuentaField.getText(),
-                bancoField.getText(),
-                numeroCuentaField.getText(),
-                tipoCuentaField.getText(),
-                Double.parseDouble(saldoCuentaField.getText()),
-                cuentaUsuarioBox.getValue()
-        );
+                        idCuentaField.getText(),
+                        bancoField.getText(),
+                        numeroCuentaField.getText(),
+                        tipoCuentaField.getText(),
+                cuentaUsuarioBox.getValue(),
+                Double.parseDouble(saldoCuentaField.getText())
+                );
         listaCuentas.add(cuenta);
         Cuenta.guardarCuenta(cuenta);
         limpiarCamposCuenta();
@@ -289,7 +289,7 @@ public class Controller {
         Cuenta seleccionada = tableViewCuenta.getSelectionModel().getSelectedItem();
         if (seleccionada != null) {
             listaCuentas.remove(seleccionada);
-            Cuenta.eliminarCuenta(seleccionada);
+            Cuenta.eliminarCuenta(String.valueOf(seleccionada));
             limpiarCamposCuenta();
         }
     }
@@ -326,7 +326,7 @@ public class Controller {
         Transaccion seleccionada = tableViewTransaccion.getSelectionModel().getSelectedItem();
         if (seleccionada != null) {
             listaTransacciones.remove(seleccionada);
-            Transaccion.eliminarTransaccion(seleccionada);
+            Transaccion.eliminarTransaccion(String.valueOf(seleccionada));
             limpiarCamposTransaccion();
         }
     }
@@ -376,7 +376,7 @@ public class Controller {
         Presupuesto seleccionado = tableViewPresupuesto.getSelectionModel().getSelectedItem();
         if (seleccionado != null) {
             listaPresupuestos.remove(seleccionado);
-            Presupuesto.eliminarPresupuesto(seleccionado);
+            Presupuesto.eliminarPresupuesto(String.valueOf(seleccionado));
             limpiarCamposPresupuesto();
         }
     }
@@ -388,5 +388,7 @@ public class Controller {
         montoGastadoField.clear();
         presupuestoCategoriaBox.setValue(null);
     }
+
+
 
 }

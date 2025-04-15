@@ -20,6 +20,10 @@ public class Presupuesto {
         this.categoria = categoria;
     }
 
+    public static void guardarPresupuesto(Presupuesto presupuesto) {
+        
+    }
+
     public String getIdPresupuesto() {
         return idPresupuesto;
     }

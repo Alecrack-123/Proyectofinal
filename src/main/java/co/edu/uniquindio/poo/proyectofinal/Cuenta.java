@@ -21,6 +21,10 @@ public class Cuenta {
         this.usuario = usuario;
     }
 
+    public static void guardarCuenta(Cuenta cuenta) {
+        
+    }
+
     public String getIdCuenta() {
         return idCuenta;
     }

@@ -29,8 +29,11 @@ public class Usuario {
             this.transacciones = new ArrayList<>();
         }
 
+    public static void guardarUsuario(Usuario usuario) {
+    }
+
     public String getIdUsuario() {
-        return idUsuario;
+        return null;
     }
 
     public void setIdUsuario(String idUsuario) {
