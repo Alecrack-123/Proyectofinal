@@ -40,6 +40,14 @@ public class Categoria {
         this.descripcion = descripcion;
     }
 
+    public static List<Categoria> getCategorias() {
+        return categorias;
+    }
+
+    public static void setCategorias(List<Categoria> categorias) {
+        Categoria.categorias = categorias;
+    }
+
     // CRUD: Crear categoría
     public static void crearCategoria(Categoria categoria) {
         if (categoria == null || buscarCategoriaPorId(categoria.getIdCategoria()) != null) {

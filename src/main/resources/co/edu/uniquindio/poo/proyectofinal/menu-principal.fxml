@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox alignment="CENTER" spacing="20" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="co.edu.uniquindio.poo.proyectofinal.MenuPrincipalController">
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+
+    <Label text="Sistema de Gestión" style="-fx-font-size: 24px;"/>
+
+    <Button text="Gestión de Presupuestos"
+            onAction="#abrirPresupuestos"
+            prefWidth="200"/>
+
+    <Button text="Gestión de Cuentas"
+            onAction="#abrirCuentas"
+            prefWidth="200"/>
+</VBox>

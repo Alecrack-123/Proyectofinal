@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.text.Font?>
+
+<VBox spacing="20" xmlns:fx="http://javafx.com/fxml" fx:controller="co.edu.uniquindio.poo.proyectofinal.AdministradorController">
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+
+    <!-- Barra de navegación superior -->
+    <HBox spacing="10" alignment="CENTER_LEFT" style="-fx-background-color: #2196F3; -fx-padding: 10;">
+        <Label text="Panel de Administración" style="-fx-text-fill: white; -fx-font-size: 20px; -fx-font-weight: bold;"/>
+        <Region HBox.hgrow="ALWAYS"/>
+        <Button text="Cerrar Sesión" onAction="#cerrarSesion"
+                style="-fx-background-color: #ff4444; -fx-text-fill: white;"/>
+    </HBox>
+
+    <!-- Contenedor principal -->
+    <SplitPane dividerPositions="0.25" VBox.vgrow="ALWAYS">
+        <!-- Panel de navegación izquierdo -->
+        <VBox spacing="10" style="-fx-background-color: #f5f5f5; -fx-padding: 10;">
+            <Label text="Menú" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+            <Button text="Gestión de Usuarios" onAction="#mostrarGestionUsuarios"
+                    styleClass="menu-button" maxWidth="Infinity"/>
+            <Button text="Gestión de Cuentas" onAction="#mostrarGestionCuentas"
+                    styleClass="menu-button" maxWidth="Infinity"/>
+            <Button text="Gestión de Categorías" onAction="#mostrarGestionCategorias"
+                    styleClass="menu-button" maxWidth="Infinity"/>
+            <Button text="Gestión de Presupuestos" onAction="#mostrarGestionPresupuestos"
+                    styleClass="menu-button" maxWidth="Infinity"/>
+            <Button text="Gestión de Transacciones" onAction="#mostrarGestionTransacciones"
+                    styleClass="menu-button" maxWidth="Infinity"/>
+            <Button text="Reportes" onAction="#mostrarReportes"
+                    styleClass="menu-button" maxWidth="Infinity"/>
+        </VBox>
+
+        <!-- Panel de contenido principal -->
+        <StackPane fx:id="contenedorPrincipal">
+            <!-- Panel de bienvenida -->
+            <VBox alignment="CENTER" spacing="20">
+                <Label text="Bienvenido al Panel de Administración"
+                       style="-fx-font-size: 24px; -fx-font-weight: bold;"/>
+                <Label text="Seleccione una opción del menú para comenzar"
+                       style="-fx-font-size: 16px;"/>
+
+                <!-- Resumen de estadísticas -->
+                <GridPane hgap="20" vgap="20" alignment="CENTER">
+                    <padding>
+                        <Insets top="20" right="20" bottom="20" left="20"/>
+                    </padding>
+
+                    <!-- Tarjetas de estadísticas -->
+                    <VBox styleClass="stat-card" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                        <Label text="Total Usuarios" styleClass="stat-title"/>
+                        <Label fx:id="labelTotalUsuarios" text="0" styleClass="stat-value"/>
+                    </VBox>
+
+                    <VBox styleClass="stat-card" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                        <Label text="Total Cuentas" styleClass="stat-title"/>
+                        <Label fx:id="labelTotalCuentas" text="0" styleClass="stat-value"/>
+                    </VBox>
+
+                    <VBox styleClass="stat-card" GridPane.columnIndex="2" GridPane.rowIndex="0">
+                        <Label text="Total Transacciones" styleClass="stat-title"/>
+                        <Label fx:id="labelTotalTransacciones" text="0" styleClass="stat-value"/>
+                    </VBox>
+
+                    <VBox styleClass="stat-card" GridPane.columnIndex="0" GridPane.rowIndex="1">
+                        <Label text="Total Presupuestos" styleClass="stat-title"/>
+                        <Label fx:id="labelTotalPresupuestos" text="0" styleClass="stat-value"/>
+                    </VBox>
+
+                    <VBox styleClass="stat-card" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                        <Label text="Total Categorías" styleClass="stat-title"/>
+                        <Label fx:id="labelTotalCategorias" text="0" styleClass="stat-value"/>
+                    </VBox>
+                </GridPane>
+            </VBox>
+        </StackPane>
+    </SplitPane>
+
+    <!-- Barra de estado inferior -->
+    <HBox spacing="10" style="-fx-background-color: #e0e0e0; -fx-padding: 5;">
+        <Label fx:id="labelEstado" text="Listo"/>
+        <Region HBox.hgrow="ALWAYS"/>
+        <Label fx:id="labelFechaHora"/>
+    </HBox>
+
+    <!-- Estilos CSS -->
+    <style>
+        .menu-button {
+        -fx-background-color: #2196F3;
+        -fx-text-fill: white;
+        -fx-padding: 10;
+        -fx-cursor: hand;
+        -fx-background-radius: 5;
+        }
+
+        .menu-button:hover {
+        -fx-background-color: #1976D2;
+        }
+
+        .stat-card {
+        -fx-background-color: white;
+        -fx-padding: 20;
+        -fx-background-radius: 10;
+        -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 10, 0, 0, 0);
+        -fx-min-width: 200;
+        -fx-alignment: CENTER;
+        }
+
+        .stat-title {
+        -fx-font-size: 16px;
+        -fx-font-weight: bold;
+        -fx-text-fill: #757575;
+        }
+
+        .stat-value {
+        -fx-font-size: 24px;
+        -fx-font-weight: bold;
+        -fx-text-fill: #2196F3;
+        }
+
+        .button {
+        -fx-cursor: hand;
+        }
+
+        .split-pane-divider {
+        -fx-background-color: #e0e0e0;
+        }
+
+        .split-pane {
+        -fx-background-color: transparent;
+        }
+    </style>
+</VBox>
