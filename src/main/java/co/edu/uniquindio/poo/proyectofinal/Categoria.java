@@ -16,10 +16,6 @@ public class Categoria {
         this.descripcion = descripcion;
     }
 
-    public static void guardarCategoria(Categoria categoria) {
-        
-    }
-
     public String getIdCategoria() {
         return idCategoria;
     }
@@ -42,6 +38,14 @@ public class Categoria {
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
+    }
+
+    public static List<Categoria> getCategorias() {
+        return categorias;
+    }
+
+    public static void setCategorias(List<Categoria> categorias) {
+        Categoria.categorias = categorias;
     }
 
     // CRUD: Crear categoría

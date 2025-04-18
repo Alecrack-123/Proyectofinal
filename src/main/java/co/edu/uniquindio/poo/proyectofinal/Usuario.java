@@ -33,7 +33,7 @@ public class Usuario {
     }
 
     public String getIdUsuario() {
-        return null;
+        return idUsuario;
     }
 
     public void setIdUsuario(String idUsuario) {
@@ -102,6 +102,14 @@ public class Usuario {
 
     public void setTransacciones(List<Transaccion> transacciones) {
         this.transacciones = transacciones;
+    }
+
+    public static List<Usuario> getUsuarios() {
+        return usuarios;
+    }
+
+    public static void setUsuarios(List<Usuario> usuarios) {
+        Usuario.usuarios = usuarios;
     }
 
     // CRUD: Crear usuario

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml" fx:controller="co.edu.uniquindio.poo.proyectofinal.CuentaController">
+    <VBox spacing="10" padding="20">
+        <!-- Formulario -->
+        <GridPane hgap="10" vgap="10">
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
+
+            <!-- ID Cuenta -->
+            <Label text="ID Cuenta:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+            <TextField fx:id="txtIdCuenta" promptText="Ingrese ID de la cuenta"
+                       GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+
+            <!-- Banco -->
+            <Label text="Banco:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+            <TextField fx:id="txtBanco" promptText="Ingrese nombre del banco"
+                       GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+
+            <!-- Número de Cuenta -->
+            <Label text="Número de Cuenta:" GridPane.columnIndex="2" GridPane.rowIndex="0"/>
+            <TextField fx:id="txtNumeroCuenta" promptText="Ingrese número de cuenta"
+                       GridPane.columnIndex="3" GridPane.rowIndex="0"/>
+
+            <!-- Tipo de Cuenta -->
+            <Label text="Tipo de Cuenta:" GridPane.columnIndex="2" GridPane.rowIndex="1"/>
+            <ComboBox fx:id="cbTipoCuenta" promptText="Seleccione tipo de cuenta"
+                      GridPane.columnIndex="3" GridPane.rowIndex="1"/>
+
+            <!-- Usuario -->
+            <Label text="Usuario:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+            <ComboBox fx:id="cbUsuario" promptText="Seleccione usuario"
+                      GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+
+            <!-- Saldo -->
+            <Label text="Saldo:" GridPane.columnIndex="2" GridPane.rowIndex="2"/>
+            <TextField fx:id="txtSaldo" promptText="Ingrese saldo inicial"
+                       GridPane.columnIndex="3" GridPane.rowIndex="2"/>
+        </GridPane>
+
+        <!-- Botones -->
+        <HBox spacing="10" alignment="CENTER">
+            <Button text="Guardar" onAction="#guardarCuenta"/>
+            <Button text="Eliminar" onAction="#eliminarCuenta"/>
+            <Button text="Limpiar" onAction="#limpiarCampos"/>
+        </HBox>
+
+        <!-- Tabla -->
+        <TableView fx:id="tablaCuentas" VBox.vgrow="ALWAYS">
+            <columns>
+                <TableColumn fx:id="columnaId" text="ID" prefWidth="100"/>
+                <TableColumn fx:id="columnaBanco" text="Banco" prefWidth="150"/>
+                <TableColumn fx:id="columnaNumeroCuenta" text="Número Cuenta" prefWidth="150"/>
+                <TableColumn fx:id="columnaTipoCuenta" text="Tipo" prefWidth="100"/>
+                <TableColumn fx:id="columnaUsuario" text="Usuario" prefWidth="150"/>
+                <TableColumn fx:id="columnaSaldo" text="Saldo" prefWidth="100"/>
+            </columns>
+            <columnResizePolicy>
+                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+            </columnResizePolicy>
+        </TableView>
+    </VBox>
+</AnchorPane>

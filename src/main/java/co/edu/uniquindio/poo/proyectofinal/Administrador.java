@@ -4,28 +4,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Administrador {
-    private String idAdmin;
     private String nombre;
     private String correo;
 
     private static List<Administrador> administradores = new ArrayList<>();
 
-    public Administrador(String idAdmin, String nombre, String correo) {
-        this.idAdmin = idAdmin;
+    public Administrador(String idAdmin, String nombre) {
         this.nombre = nombre;
         this.correo = correo;
     }
 
     public static void guardarAdministrador(Administrador admin) {
         
-    }
-
-    public String getIdAdmin() {
-        return idAdmin;
-    }
-
-    public void setIdAdmin(String idAdmin) {
-        this.idAdmin = idAdmin;
     }
 
     public String getNombre() {
@@ -54,16 +44,16 @@ public class Administrador {
 
     // CRUD: Crear administrador
     public static void crearAdministrador(Administrador administrador) {
-        if (administrador == null || buscarAdministradorPorId(administrador.getIdAdmin()) != null) {
+        if (administrador == null || buscarAdministradorPorId(administrador.getCorreo()) != null) {
             throw new IllegalArgumentException("El administrador ya existe o es inválido.");
         }
         administradores.add(administrador);
     }
 
     // CRUD: Buscar administrador por ID
-    public static Administrador buscarAdministradorPorId(String idAdmin) {
+    public static Administrador buscarAdministradorPorId(String correo) {
         for (Administrador administrador : administradores) {
-            if (administrador.getIdAdmin().equals(idAdmin)) {
+            if (administrador.getCorreo().equals(correo)) {
                 return administrador;
             }
         }
@@ -72,7 +62,7 @@ public class Administrador {
 
     // CRUD: Actualizar administrador
     public static void actualizarAdministrador(Administrador administradorActualizado) {
-        Administrador administradorExistente = buscarAdministradorPorId(administradorActualizado.getIdAdmin());
+        Administrador administradorExistente = buscarAdministradorPorId(administradorActualizado.getCorreo());
         if (administradorExistente == null) {
             throw new IllegalArgumentException("El administrador no existe.");
         }

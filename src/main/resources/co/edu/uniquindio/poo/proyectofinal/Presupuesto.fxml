@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml" fx:controller="co.edu.uniquindio.poo.proyectofinal.PresupuestoController">
+    <VBox spacing="10" padding="20">
+        <HBox spacing="10">
+            <TextField fx:id="txtNombre" promptText="Nombre"/>
+            <TextField fx:id="txtMontoLimite" promptText="Monto Límite"/>
+        </HBox>
+        <HBox spacing="10">
+            <DatePicker fx:id="dpFechaInicio" promptText="Fecha Inicio"/>
+            <DatePicker fx:id="dpFechaFin" promptText="Fecha Fin"/>
+        </HBox>
+        <HBox spacing="10">
+            <ComboBox fx:id="cbUsuario" promptText="Selecciona Usuario"/>
+            <ComboBox fx:id="cbCategoria" promptText="Selecciona Categoría"/>
+        </HBox>
+        <HBox spacing="10">
+            <Button text="Guardar" onAction="#guardarPresupuesto"/>
+            <Button text="Eliminar" onAction="#eliminarPresupuesto"/>
+            <Button text="Limpiar" onAction="#limpiarCampos"/>
+        </HBox>
+        <TableView fx:id="tablaPresupuestos" prefHeight="300">
+            <columns>
+                <TableColumn fx:id="columnaId" text="ID"/>
+                <TableColumn fx:id="columnaNombre" text="Nombre"/>
+                <TableColumn fx:id="columnaMontoLimite" text="Monto Límite"/>
+                <TableColumn fx:id="columnaCategoria" text="Categoría"/>
+                <TableColumn fx:id="columnaFechaInicio" text="Fecha Inicio"/>
+                <TableColumn fx:id="columnaFechaFin" text="Fecha Fin"/>
+                <TableColumn fx:id="columnaUsuario" text="Usuario"/>
+                <TableColumn fx:id="columnaEstado" text="Estado"/>
+            </columns>
+        </TableView>
+    </VBox>
+</AnchorPane>
